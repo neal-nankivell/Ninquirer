@@ -19,3 +19,22 @@ After an option has been selected, the result is shown on the same line as the q
 ```
 > ? Would you like to use the default config? Yes
 ```
+
+
+## Build
+From the src directory
+```
+dotnet build
+```
+
+## Test
+From the src directory
+```
+dotnet test
+```
+
+## Interactive Demo
+From the src directory
+```
+dotnet run --project Ninquirer.Demo/Ninquirer.Demo.csproj
+```
