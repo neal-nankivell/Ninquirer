@@ -8,11 +8,15 @@ namespace Ninquirer.Demo
     {
         static void Main(string[] args)
         {
-            ColoredConsole.WriteLine("Welcome to the ninquire Demo!", ConsoleColor.DarkMagenta);
-            ColoredConsole.WriteLine("Our goal is to make asking those tough questions easier. 🙋", ConsoleColor.Cyan);
+            ColoredConsole console = new ColoredConsole();
 
-            ColoredConsole.WriteLine("\n// e.g. A Yes/No decision can be requested with the following snipit.", ConsoleColor.DarkGray);
-            ColoredConsole.WriteLine(
+            console.WriteLine("Welcome to the ninquire Demo!", ConsoleColor.DarkMagenta);
+            console.WriteLine("Our goal is to make asking those tough questions easier. 🙋", ConsoleColor.Cyan);
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            console.WriteLine("\n// e.g. A Yes/No decision can be requested with the following snipit.", ConsoleColor.DarkGray);
+            console.WriteLine(
                 ("bool ", ConsoleColor.DarkBlue),
                 ("result = ", default),
                 ("Prompt.", ConsoleColor.DarkMagenta),
@@ -22,19 +26,54 @@ namespace Ninquirer.Demo
                 (");\n", ConsoleColor.DarkGray)
             );
 
-            ColoredConsole.WriteLine("// Try pressing keys to see how the prompt gives feedback", ConsoleColor.DarkGray);
-            ColoredConsole.WriteLine("// note: confirmation requires an uppercase Y\n", ConsoleColor.DarkGray);
+            Prompt.PressAnyKeyToContinue(true);
 
-            if (Prompt.Confirm("Would you like to see the default colors in your Terminal?"))
+            console.WriteLine("// Try pressing keys to see how the prompt gives feedback", ConsoleColor.DarkGray);
+            console.WriteLine("// note: confirmation requires an uppercase Y\n", ConsoleColor.DarkGray);
+
+
+            if (Prompt.Confirm("Would you like to see the colors configured in your Terminal?"))
             {
-                ColoredConsole.WriteLine(
+                console.WriteLine(
                     Enum.GetValues(typeof(ConsoleColor))
                         .Cast<ConsoleColor?>()
                         .Select(color => ($"•{color}• ", color))
                         .ToArray());
-            };
+            }
+            else
+            {
+                console.WriteLine("🦄 🌈 Here are some emojis instead!");
+            }
 
-            ColoredConsole.WriteLine("\n// After an option has been selected, the result is shown on the same line as the question\n", ConsoleColor.DarkGray);
+            console.WriteLine("\n// After an option has been selected, the chosen result is shown on the same line as the question", ConsoleColor.DarkGray);
+            console.WriteLine(("// ", ConsoleColor.DarkGray), ("Yes ", ConsoleColor.DarkGreen), ("or ", ConsoleColor.DarkGray), ("No", ConsoleColor.Red));
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            console.WriteLine("\n// Another common user input we often want is even simplier, this snippit allows us to wait for any input", ConsoleColor.DarkGray);
+            console.WriteLine(
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("PressAnyKeyToContinue", ConsoleColor.DarkRed),
+                ("();\n", ConsoleColor.DarkGray)
+            );
+
+            Prompt.PressAnyKeyToContinue();
+
+            console.WriteLine("// Hang on that one remained in terminal window, but earlier they were going away?\n", ConsoleColor.DarkGray);
+
+            Prompt.PressAnyKeyToContinue();
+
+            console.WriteLine("\n// The default behaviour is to keep the result in the console, but this can be changed with a parameter", ConsoleColor.DarkGray);
+            console.WriteLine(
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("PressAnyKeyToContinue", ConsoleColor.DarkRed),
+                ("(hideResult: ", ConsoleColor.DarkGray),
+                ("false", ConsoleColor.DarkYellow),
+                (");\n", ConsoleColor.DarkGray)
+            );
+
+            Prompt.PressAnyKeyToContinue(true);
+            console.WriteLine("👻 🎃 😱");
         }
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using System.Linq;
+using Ninquirer.Tests.Builders;
 using NUnit.Framework;
 
 namespace Ninquirer.Internal.Tests
@@ -8,6 +8,7 @@ namespace Ninquirer.Internal.Tests
     {
         [TestCase('q', 'w', 'Y', ExpectedResult = true)]
         [TestCase('Y', ExpectedResult = true)]
+        [TestCase('y', 'y', 'n', ExpectedResult = false)]
         [TestCase('q', 'w', 'n', ExpectedResult = false)]
         [TestCase('n', ExpectedResult = false)]
         public bool Confirm(params char[] inputSequence)
@@ -18,25 +19,13 @@ namespace Ninquirer.Internal.Tests
 there needs to be a Y or n. Otherwise the the test will hang");
             }
 
-            var sut = new Confirm(GenerateReadKeySequence(inputSequence), Console.Write);
-            return sut.Ask("Test Question??");
-        }
+            var consoleMock = new ConsoleMockBuilder()
+                .WithReadKeySequence(inputSequence)
+                .Build();
 
-        public Func<ConsoleKeyInfo> GenerateReadKeySequence(params char[] characters)
-        {
-            int index = 0;
-            return () =>
-            {
-                var character = characters[index];
-                index++;
-                return new ConsoleKeyInfo(
-                    character,
-                    (ConsoleKey)character,
-                    false,
-                    false,
-                    false
-                );
-            };
+            var sut = new Confirm(consoleMock.Object);
+
+            return sut.Ask("Test Question??");
         }
     }
 }
