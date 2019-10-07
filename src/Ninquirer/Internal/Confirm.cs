@@ -5,13 +5,10 @@ namespace Ninquirer.Internal
 {
     public class Confirm
     {
-        private readonly Func<ConsoleKeyInfo> _readKey;
-        private readonly ColoredWrite _write;
+        private readonly IColoredConsole _console;
 
-        public Confirm() : this(() => Console.ReadKey(true), ColoredConsole.Write) { }
-
-        public Confirm(Func<ConsoleKeyInfo> readKey, ColoredWrite write)
-            => (_readKey, _write) = (readKey, write);
+        public Confirm(IColoredConsole console)
+            => _console = console ?? throw new ArgumentNullException(nameof(console));
 
         public bool Ask(string message)
         {
@@ -23,18 +20,18 @@ namespace Ninquirer.Internal
             };
 
             ConsoleKeyInfo input;
-            _write(("\r? ", ConsoleColor.DarkGreen), (message, default), (" (Y/n)  ", ConsoleColor.DarkGray));
+            _console.Write(("\r? ", ConsoleColor.DarkGreen), (message, default), (" (Y/n)  ", ConsoleColor.DarkGray));
             do
             {
-                input = _readKey();
+                input = _console.ReadKey();
                 if (char.IsLetterOrDigit(input.KeyChar))
                 {
-                    _write(($"\b{input.KeyChar}", ConsoleColor.Red));
+                    _console.Write(($"\b{input.KeyChar}", ConsoleColor.Red));
                 }
             }
             while (!isValid(input));
-            ColoredConsole.Backspace(8);
-            _write(
+            _console.Backspace(8);
+            _console.Write(
                 input switch
                 {
                     { KeyChar: 'Y' } => (" Yes", ConsoleColor.DarkGreen),
