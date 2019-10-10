@@ -1,4 +1,4 @@
-using AutoFixture.NUnit3;
+using System;
 using Ninquirer.Tests.Builders;
 using NUnit.Framework;
 
@@ -6,8 +6,8 @@ namespace Ninquirer.Internal.Tests
 {
     public class PressAnyKeyToContinueTests
     {
-        [Test, AutoData]
-        public void AllKeysContinue(char input)
+        [Test]
+        public void AllKeysContinue([Values]ConsoleKey input)
         {
             var consoleMock = new ConsoleMockBuilder()
                 .WithReadKeySequence(input)
