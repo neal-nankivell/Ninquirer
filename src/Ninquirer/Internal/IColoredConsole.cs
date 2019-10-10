@@ -15,5 +15,11 @@ namespace Ninquirer.Internal
         void Backspace(int length);
 
         ConsoleKeyInfo ReadKey();
+
+        void SetCursorPosition(int left, int top);
+
+        int CursorTop { get; }
+
+        int WindowWidth { get; }
     }
 }
