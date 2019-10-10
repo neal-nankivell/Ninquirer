@@ -73,7 +73,17 @@ namespace Ninquirer.Demo
             );
 
             Prompt.PressAnyKeyToContinue(true);
-            console.WriteLine("👻 🎃 😱");
+            console.WriteLine("// 👻 🎃 😱");
+
+            var color = Prompt.Select(
+                "What is your favourite colour?",
+                Enum.GetValues(typeof(ConsoleColor))
+                    .Cast<ConsoleColor>()
+                    .Select(x => x.ToString())
+                    .ToArray()
+                );
+
+            Console.WriteLine($"// You selected {color}!");
         }
     }
 }

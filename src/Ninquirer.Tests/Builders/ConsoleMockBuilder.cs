@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Moq;
 using Ninquirer.Internal;
 
@@ -13,6 +14,9 @@ namespace Ninquirer.Tests.Builders
             _inputSequence = inputSequence;
             return this;
         }
+
+        public ConsoleMockBuilder WithReadKeySequence(params ConsoleKey[] inputSequence)
+            => WithReadKeySequence(inputSequence.Select(x => (char)x).ToArray());
 
         public Mock<IColoredConsole> Build()
         {

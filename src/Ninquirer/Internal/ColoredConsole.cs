@@ -5,6 +5,10 @@ namespace Ninquirer.Internal
 
     public class ColoredConsole : IColoredConsole
     {
+        public int CursorTop => Console.CursorTop;
+
+        public int WindowWidth => Console.WindowWidth;
+
         public void Write(params (string message, ConsoleColor? color)[] messages)
         {
             foreach ((string message, ConsoleColor? color) in messages)
@@ -40,5 +44,8 @@ namespace Ninquirer.Internal
         }
 
         public ConsoleKeyInfo ReadKey() => Console.ReadKey(true);
+
+        public void SetCursorPosition(int left, int top)
+            => Console.SetCursorPosition(left, top);
     }
 }
