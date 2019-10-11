@@ -6,6 +6,8 @@ Our goal is to make asking those tough questions easier. 🙋🙋‍♂️
 ## Confirm
 A Yes/No decision can be requested with the following snipit.
 ```csharp
+using Ninquirer;
+
 bool result = Prompt.Confirm("Would you like to use the default config?");
 ```
 
@@ -20,6 +22,24 @@ After an option has been selected, the result is shown on the same line as the q
 > ? Would you like to use the default config? Yes
 ```
 
+## Press Any Key to Continue
+Somtimes we want to wait for any key to be pressed.
+
+```csharp
+using Ninquirer;
+
+Prompt.PressAnyKeyToContinue();
+```
+
+Initial output:
+```
+> Press any key to continue:
+```
+
+After a key has been pressed:
+```
+> Press any key to continue: ✔ 🎉
+```
 
 ## Build
 From the src directory
