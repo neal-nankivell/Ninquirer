@@ -41,6 +41,34 @@ After a key has been pressed:
 > Press any key to continue: ✔ 🎉
 ```
 
+## Select Option
+Given a collection of values allows a single item to be selected.
+
+```csharp
+using Ninquirer;
+
+var color = Prompt.Select(
+  "What is your favourite colour?",
+  "Red",
+  "Green",
+  "Blue");
+```
+
+Initial output:
+```
+? What is your favourite colour?
+ •Red 
+ •Green 
+ •Blue 
+```
+Using `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
+Then using `Enter` to make a selection.
+
+After a selection has been made:
+```
+? What is your favourite colour? Blue
+```
+
 ## Build
 From the src directory
 ```
