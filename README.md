@@ -62,7 +62,7 @@ Initial output:
  •Blue 
 ```
 Using `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
-Then using `Enter` to lock in a selection
+Then using `Enter` to make a selection.
 
 After a selection has been made:
 ```
