@@ -7,6 +7,6 @@
     <PackageId>Ninquirer</PackageId>
     <Version>1.0.0-alpha</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
 </Project>
