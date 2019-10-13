@@ -4,6 +4,7 @@
     <LangVersion>8.0</LangVersion>
     <NullableReferenceTypes>true</NullableReferenceTypes>
     <PackageId>Ninquirer</PackageId>
+    <Title>Ninquirer</Title>
     <Version>1.0.0-alpha</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
