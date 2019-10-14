@@ -1,10 +1,10 @@
-
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Ninquirer.Internal
 {
-    public class Select
+    public class SelectMulitple
     {
         private readonly IColoredConsole _console;
 
@@ -18,11 +18,10 @@ namespace Ninquirer.Internal
             ConsoleKey.UpArrow,
             ConsoleKey.K
         };
-
-        public Select(IColoredConsole console)
+        public SelectMulitple(IColoredConsole console)
             => _console = console ?? throw new ArgumentNullException(nameof(console));
 
-        public string Ask(string question, params string[] options)
+        public string[] Ask(string question, string[] options)
         {
             if (options == null)
             {
@@ -34,7 +33,10 @@ namespace Ninquirer.Internal
             }
 
             bool isEnterKey(ConsoleKeyInfo? info) => info?.Key == ConsoleKey.Enter;
+            bool isSpaceKey(ConsoleKeyInfo? info) => info?.Key == ConsoleKey.Spacebar;
+
             ConsoleKeyInfo input;
+            HashSet<int> selection = new HashSet<int>();
             int index = 0;
 
             do
@@ -46,20 +48,23 @@ namespace Ninquirer.Internal
 
                 (string message, ConsoleColor? color) Format(string option, int i)
                 {
+                    bool selected = selection.Contains(i);
                     bool highlighted = i == index;
 
+                    string bullet = selected ? "⦿" : "○";
                     string prefix = highlighted ? "▶" : " ";
-                    ConsoleColor? color = highlighted ?
-                        ConsoleColor.DarkGreen :
-                        (ConsoleColor?)default;
+                    ConsoleColor? color = (selected, highlighted) switch
+                    {
+                        { highlighted: true } => ConsoleColor.DarkGreen,
+                        { selected: true } => ConsoleColor.DarkBlue,
+                        _ => (ConsoleColor?)default
+                    };
 
-                    return ($"\n {prefix} • {option}", color);
+                    return ($"\n {prefix} {bullet} {option}", color);
                 }
 
-                _console.Write(
-                    options.Select(Format)
-                    .ToArray()
-                );
+                _console.Write(options.Select(Format).ToArray());
+
                 input = _console.ReadKey();
 
                 index = input switch
@@ -69,14 +74,28 @@ namespace Ninquirer.Internal
                     _ => index
                 };
 
+                if (isSpaceKey(input))
+                {
+                    if (selection.Contains(index))
+                    {
+                        selection.Remove(index);
+                    }
+                    else
+                    {
+                        selection.Add(index);
+                    }
+                }
+
                 _console.SetCursorPosition(0, _console.CursorTop - options.Length);
+
 
             } while (!isEnterKey(input));
 
+            var result = selection.Select(i => options[i]).ToArray();
             _console.Write(
                 ("\r? ", ConsoleColor.DarkGreen),
                 (question, default),
-                ($" {options[index]}", ConsoleColor.DarkGreen)
+                ($" {string.Join(", ", result)}", ConsoleColor.DarkGreen)
             );
 
             // Hack to "clear" the list of options shown
@@ -89,7 +108,7 @@ namespace Ninquirer.Internal
 
             _console.SetCursorPosition(0, _console.CursorTop - options.Length + 1);
 
-            return options[index];
+            return result;
         }
     }
 }

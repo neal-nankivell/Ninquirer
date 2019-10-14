@@ -12,10 +12,12 @@ namespace Ninquirer.Demo
 
             console.WriteLine(
                 "Welcome to the ninquire Demo!",
-                ConsoleColor.DarkMagenta);
+                ConsoleColor.DarkMagenta
+            );
             console.WriteLine(
                 "Our goal is to make asking those tough questions easier. 🙋",
-                ConsoleColor.Cyan);
+                ConsoleColor.Cyan
+            );
 
             Prompt.PressAnyKeyToContinue(true);
 
@@ -39,11 +41,12 @@ namespace Ninquirer.Demo
 
             console.WriteLine(
                 "// Try pressing keys to see how the prompt gives feedback",
-                ConsoleColor.DarkGray);
+                ConsoleColor.DarkGray
+            );
             console.WriteLine(
                 "// note: confirmation requires an uppercase Y\n",
-                ConsoleColor.DarkGray);
-
+                ConsoleColor.DarkGray
+            );
 
             if (Prompt.Confirm(
                 "Would you like to see the colors configured in your Terminal?"))
@@ -61,7 +64,8 @@ namespace Ninquirer.Demo
 
             console.WriteLine(
                 "\n// After an option has been selected, the chosen result is shown on the same line as the question",
-                ConsoleColor.DarkGray);
+                ConsoleColor.DarkGray
+            );
             console.WriteLine(
                 ("// ", ConsoleColor.DarkGray),
                 ("Yes ", ConsoleColor.DarkGreen),
@@ -72,7 +76,8 @@ namespace Ninquirer.Demo
 
             console.WriteLine(
                 "\n// Another common user input we often want is even simplier, this snippit allows us to wait for any input",
-                ConsoleColor.DarkGray);
+                ConsoleColor.DarkGray
+            );
             console.WriteLine(
                 ("Prompt.", ConsoleColor.DarkMagenta),
                 ("PressAnyKeyToContinue", ConsoleColor.DarkRed),
@@ -83,13 +88,15 @@ namespace Ninquirer.Demo
 
             console.WriteLine(
                 "// Hang on that one remained in terminal window, but earlier they were going away?\n",
-                ConsoleColor.DarkGray);
+                ConsoleColor.DarkGray
+            );
 
             Prompt.PressAnyKeyToContinue();
 
             console.WriteLine(
                 "\n// The default behaviour is to keep the result in the console, but this can be changed with a parameter",
-                ConsoleColor.DarkGray);
+                ConsoleColor.DarkGray
+            );
             console.WriteLine(
                 ("Prompt.", ConsoleColor.DarkMagenta),
                 ("PressAnyKeyToContinue", ConsoleColor.DarkRed),
@@ -101,6 +108,71 @@ namespace Ninquirer.Demo
             Prompt.PressAnyKeyToContinue(true);
             console.WriteLine("// 👻 🎃 😱");
 
+            console.WriteLine(
+                "\n\n// Selection of a single item from a list can be made using:",
+                ConsoleColor.DarkGray
+            );
+
+            console.WriteLine(
+                ("string ", ConsoleColor.DarkBlue),
+                ("color = ", default),
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("Select", ConsoleColor.DarkRed),
+                ("(\n", ConsoleColor.DarkGray),
+                (
+                    "\t\"What is your favourite colour?\"",
+                    ConsoleColor.DarkGreen
+                ),
+                (",\n", ConsoleColor.DarkGray),
+                ("\t\"Red\"", ConsoleColor.DarkGreen),
+                (",\n", ConsoleColor.DarkGray),
+                ("\t\"Green\"", ConsoleColor.DarkGreen),
+                (",\n", ConsoleColor.DarkGray),
+                ("\t\"Blue\"", ConsoleColor.DarkGreen),
+                (");\n", ConsoleColor.DarkGray)
+            );
+
+            console.WriteLine(
+                "\n// Or passing an array",
+                ConsoleColor.DarkGray
+            );
+            console.WriteLine(
+                ("string ", ConsoleColor.DarkBlue),
+                ("color = ", default),
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("Select", ConsoleColor.DarkRed),
+                ("(\n", ConsoleColor.DarkGray),
+                (
+                    "\t\"What is your favourite colour?\"",
+                    ConsoleColor.DarkGreen
+                ),
+                (",\n", ConsoleColor.DarkGray),
+                ("\tEnum.", ConsoleColor.DarkMagenta),
+                ("GetValues", ConsoleColor.DarkRed),
+                ("(", ConsoleColor.DarkGray),
+                ("typeof", ConsoleColor.DarkBlue),
+                ("(", ConsoleColor.DarkGray),
+                ("ConsoleColor", ConsoleColor.DarkMagenta),
+                ("))\n", ConsoleColor.DarkGray),
+
+                ("\t\t.Cast", ConsoleColor.DarkRed),
+                ("<", ConsoleColor.DarkGray),
+                ("ConsoleColor", ConsoleColor.DarkMagenta),
+                (">()\n", ConsoleColor.DarkGray),
+
+                ("\t\t.Select", ConsoleColor.DarkRed),
+                ("(x => x.", ConsoleColor.DarkGray),
+                ("ToString", ConsoleColor.DarkRed),
+                ("()))\n", ConsoleColor.DarkGray),
+
+                ("\t\t.ToArray", ConsoleColor.DarkRed),
+                ("()\n", ConsoleColor.DarkGray),
+
+                ("\t);\n", ConsoleColor.DarkGray)
+            );
+
+            Prompt.PressAnyKeyToContinue(true);
+
             var color = Prompt.Select(
                 "What is your favourite colour?",
                 Enum.GetValues(typeof(ConsoleColor))
@@ -109,7 +181,59 @@ namespace Ninquirer.Demo
                     .ToArray()
                 );
 
-            Console.WriteLine($"// You selected {color}!");
+            console.WriteLine($"// You selected {color}!", ConsoleColor.DarkGray);
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            console.WriteLine(
+                "\n\n// Selection of multiple items from a list can be made using:",
+                ConsoleColor.DarkGray
+            );
+
+            console.WriteLine(
+                ("string[] ", ConsoleColor.DarkBlue),
+                ("colors = ", default),
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("SelectMulitple", ConsoleColor.DarkRed),
+                ("(\n", ConsoleColor.DarkGray),
+                (
+                    "\t\"What are your favourite colours?\"",
+                    ConsoleColor.DarkGreen
+                ),
+                (",\n", ConsoleColor.DarkGray),
+                ("\tEnum.", ConsoleColor.DarkMagenta),
+                ("GetValues", ConsoleColor.DarkRed),
+                ("(", ConsoleColor.DarkGray),
+                ("typeof", ConsoleColor.DarkBlue),
+                ("(", ConsoleColor.DarkGray),
+                ("ConsoleColor", ConsoleColor.DarkMagenta),
+                ("))\n", ConsoleColor.DarkGray),
+
+                ("\t\t.Cast", ConsoleColor.DarkRed),
+                ("<", ConsoleColor.DarkGray),
+                ("ConsoleColor", ConsoleColor.DarkMagenta),
+                (">()\n", ConsoleColor.DarkGray),
+
+                ("\t\t.Select", ConsoleColor.DarkRed),
+                ("(x => x.", ConsoleColor.DarkGray),
+                ("ToString", ConsoleColor.DarkRed),
+                ("()))\n", ConsoleColor.DarkGray),
+
+                ("\t\t.ToArray", ConsoleColor.DarkRed),
+                ("()\n", ConsoleColor.DarkGray),
+
+                ("\t);\n", ConsoleColor.DarkGray)
+            );
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            var colors = Prompt.SelectMulitple(
+                "What are your favourite colours?",
+                Enum.GetValues(typeof(ConsoleColor))
+                    .Cast<ConsoleColor>()
+                    .Select(x => x.ToString())
+                    .ToArray()
+                );
         }
     }
 }

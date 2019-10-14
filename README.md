@@ -59,16 +59,73 @@ var color = Prompt.Select(
 Initial output:
 ```
 ? What is your favourite colour?
- •Red 
- •Green 
- •Blue 
+ ▶ • Red 
+   • Green 
+   • Blue 
 ```
-Using `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
-Then using `Enter` to make a selection.
+- `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
+- `Enter` to make a selection.
 
 After a selection has been made:
 ```
 ? What is your favourite colour? Blue
+```
+
+## Select Multiple Options
+Given a collection of values select 0-n of them.
+
+```csharp
+string[] colors = Prompt.SelectMulitple(
+    "What are your favourite colours?",
+    "Black",
+    "DarkBlue",
+    "DarkGreen",
+    "DarkCyan",
+    "DarkRed",
+    "DarkMagenta",
+    "DarkYellow",
+    "Gray",
+    "DarkGray"
+    "Blue"
+    "DarkGray"
+    "Green"
+    "Cyan"
+    "Red"
+    "Magenta"
+    "Red"
+    "Yellow"
+    "White"
+);
+```
+
+Initial output:
+```
+? What are your favourite colours?
+   ○ Black
+   ⦿ DarkBlue
+   ○ DarkGreen
+   ○ DarkCyan
+   ⦿ DarkRed
+   ○ DarkMagenta
+   ⦿ DarkYellow
+   ⦿ Gray
+   ○ DarkGray
+   ○ Blue
+ ▶ ○ Green
+   ○ Cyan
+   ○ Red
+   ○ Magenta
+   ○ Yellow
+   ○ White
+```
+
+- `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
+- `Space Bar` to add/remove and item from the selection.
+- `Enter` to finish the selection.
+
+After a selection has been made:
+```
+? What are your favourite colours? DarkBlue, DarkRed, DarkYellow, Gray
 ```
 
 ## Build
