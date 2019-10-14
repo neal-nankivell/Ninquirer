@@ -43,8 +43,21 @@ namespace Ninquirer.Internal
                     ("\r? ", ConsoleColor.DarkGreen),
                     (question, default)
                 );
+
+                (string message, ConsoleColor? color) Format(string option, int i)
+                {
+                    bool highlighted = i == index;
+
+                    string prefix = highlighted ? "▶" : " ";
+                    ConsoleColor? color = highlighted ?
+                        ConsoleColor.DarkGreen :
+                        (ConsoleColor?)default;
+
+                    return ($"\n {prefix} • {option}", color);
+                }
+
                 _console.Write(
-                    options.Select((option, i) => ($"\n •{option} ", i == index ? ConsoleColor.DarkGreen : (ConsoleColor?)default))
+                    options.Select(Format)
                     .ToArray()
                 );
                 input = _console.ReadKey();
