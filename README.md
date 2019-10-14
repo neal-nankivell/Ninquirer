@@ -57,9 +57,9 @@ var color = Prompt.Select(
 Initial output:
 ```
 ? What is your favourite colour?
- •Red 
- •Green 
- •Blue 
+ ▶ • Red 
+   • Green 
+   • Blue 
 ```
 Using `Up`, `Down`, `Tab`, `j` and `k` to navigate between each option.
 Then using `Enter` to make a selection.
