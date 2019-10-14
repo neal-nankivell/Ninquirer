@@ -9,9 +9,15 @@ namespace Ninquirer
         private static Confirm _confirm = new Confirm(_console);
         private static PressAnyKeyToContinue _pressAnyKeyToContiner = new PressAnyKeyToContinue(_console);
         private static Select _select = new Select(_console);
+        private static SelectMulitple _selectMultiple = new SelectMulitple(_console);
 
         public static bool Confirm(string message) => _confirm.Ask(message);
-        public static void PressAnyKeyToContinue(bool hideResult = false) => _pressAnyKeyToContiner.Ask(hideResult);
-        public static string Select(string question, params string[] options) => _select.Ask(question, options);
+        public static void PressAnyKeyToContinue(bool hideResult = false)
+            => _pressAnyKeyToContiner.Ask(hideResult);
+        public static string Select(string question, params string[] options)
+            => _select.Ask(question, options);
+
+        public static string[] SelectMulitple(string question, params string[] options)
+            => _selectMultiple.Ask(question, options);
     }
 }
