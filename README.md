@@ -6,7 +6,19 @@ Our goal is to make asking those tough questions easier. 🙋🙋‍♂️
 [![NuGet](https://img.shields.io/nuget/v/Ninquirer.svg)](https://www.nuget.org/packages/Ninquirer/)
 [![github](https://img.shields.io/github/v/release/neal-nankivell/Ninquirer?include_prereleases&label=github)](https://github.com/neal-nankivell/Ninquirer)
 
-## Confirm
+## Installation
+### Package Manager
+```powershell
+PM > Install-Package Ninquirer
+```
+
+### .NET CLI
+```bash
+> dotnet add package Ninquirer
+```
+
+## Features
+### Confirm
 A Yes/No decision can be requested with the following snipit.
 ```csharp
 using Ninquirer;
@@ -25,7 +37,7 @@ After an option has been selected, the result is shown on the same line as the q
 > ? Would you like to use the default config? Yes
 ```
 
-## Press Any Key to Continue
+### Press Any Key to Continue
 Somtimes we want to wait for any key to be pressed.
 
 ```csharp
@@ -44,7 +56,7 @@ After a key has been pressed:
 > Press any key to continue: ✔ 🎉
 ```
 
-## Select Option
+### Select Option
 Given a collection of values allows a single item to be selected.
 
 ```csharp
@@ -72,7 +84,7 @@ After a selection has been made:
 ? What is your favourite colour? Blue
 ```
 
-## Select Multiple Options
+### Select Multiple Options
 Given a collection of values select 0-n of them.
 
 ```csharp
