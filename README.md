@@ -4,6 +4,7 @@ A dotnet lib inspired by Inquirer.js and prompts.
 Our goal is to make asking those tough questions easier. 🙋🙋‍♂️
 
 [![NuGet](https://img.shields.io/nuget/v/Ninquirer.svg)](https://www.nuget.org/packages/Ninquirer/)
+[![github](https://img.shields.io/github/v/release/neal-nankivell/Ninquirer?include_prereleases&label=github)](https://github.com/neal-nankivell/Ninquirer)
 
 ## Confirm
 A Yes/No decision can be requested with the following snipit.
