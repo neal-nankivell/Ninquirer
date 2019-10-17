@@ -6,6 +6,7 @@ Our goal is to make asking those tough questions easier. 🙋🙋‍♂️
 [![NuGet](https://img.shields.io/nuget/v/Ninquirer.svg)](https://www.nuget.org/packages/Ninquirer/)
 [![github](https://img.shields.io/github/v/release/neal-nankivell/Ninquirer?include_prereleases&label=github)](https://github.com/neal-nankivell/Ninquirer)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+[![Travis Build Status](https://travis-ci.org/neal-nankivell/Ninquirer.svg?branch=master)](https://travis-ci.org/neal-nankivell/Ninquirer)
 
 ## Installation
 ### Package Manager
