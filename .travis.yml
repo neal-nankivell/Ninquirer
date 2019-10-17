@@ -1,4 +1,4 @@
-language:C#
+language: C#
 mono: none
 dotnet: 3.0.100
 script:
