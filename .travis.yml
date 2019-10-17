@@ -1,0 +1,6 @@
+language:C#
+mono: none
+dotnet: 3.0.100
+script:
+ - dotnet build ./src
+ - dotnet test ./src
