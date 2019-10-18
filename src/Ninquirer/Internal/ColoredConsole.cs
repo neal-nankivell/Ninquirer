@@ -45,6 +45,8 @@ namespace Ninquirer.Internal
 
         public ConsoleKeyInfo ReadKey() => Console.ReadKey(true);
 
+        public string ReadLine() => Console.ReadLine();
+
         public void SetCursorPosition(int left, int top)
             => Console.SetCursorPosition(left, top);
     }

@@ -10,6 +10,9 @@ namespace Ninquirer.Demo
         {
             ColoredConsole console = new ColoredConsole();
 
+            var name = Prompt.Input("What is your name?");
+            console.WriteLine(($"Hi {name}", ConsoleColor.DarkGreen));
+
             console.WriteLine(
                 "Welcome to the ninquire Demo!",
                 ConsoleColor.DarkMagenta
