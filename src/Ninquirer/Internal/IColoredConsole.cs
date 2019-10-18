@@ -16,6 +16,8 @@ namespace Ninquirer.Internal
 
         ConsoleKeyInfo ReadKey();
 
+        string ReadLine();
+
         void SetCursorPosition(int left, int top);
 
         int CursorTop { get; }

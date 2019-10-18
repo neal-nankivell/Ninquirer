@@ -10,6 +10,7 @@ namespace Ninquirer
         private static PressAnyKeyToContinue _pressAnyKeyToContiner = new PressAnyKeyToContinue(_console);
         private static Select _select = new Select(_console);
         private static SelectMulitple _selectMultiple = new SelectMulitple(_console);
+        private static Input _input = new Input(_console);
 
         public static bool Confirm(string message) => _confirm.Ask(message);
         public static void PressAnyKeyToContinue(bool hideResult = false)
@@ -19,5 +20,7 @@ namespace Ninquirer
 
         public static string[] SelectMulitple(string question, params string[] options)
             => _selectMultiple.Ask(question, options);
+
+        public static string Input(string question) => _input.Ask(question);
     }
 }

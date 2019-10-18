@@ -143,6 +143,24 @@ After a selection has been made:
 ? What are your favourite colours? DarkBlue, DarkRed, DarkYellow, Gray
 ```
 
+### Request string input
+
+```csharp
+using Ninquirer;
+
+var name = Prompt.Input("What is your name?");
+```
+
+Initial output:
+```
+? What is your name? 
+```
+
+After a string has been typed:
+```
+? What is your name? Ninquirer
+```
+
 ## Build
 From the src directory
 ```

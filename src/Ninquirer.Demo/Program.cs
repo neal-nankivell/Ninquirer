@@ -234,6 +234,28 @@ namespace Ninquirer.Demo
                     .Select(x => x.ToString())
                     .ToArray()
                 );
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            console.WriteLine(
+                "\n\n// Requesting a raw string input can be made with Prompt.Input",
+                ConsoleColor.DarkGray
+            );
+
+            console.WriteLine(
+                ("string ", ConsoleColor.DarkBlue),
+                ("name = ", default),
+                ("Prompt.", ConsoleColor.DarkMagenta),
+                ("Input", ConsoleColor.DarkRed),
+                ("(", ConsoleColor.DarkGray),
+                ("\"What is your name?\"", ConsoleColor.DarkGreen),
+                (");\n", ConsoleColor.DarkGray)
+            );
+
+            Prompt.PressAnyKeyToContinue(true);
+
+            var name = Prompt.Input("What is your name?");
+            console.WriteLine(($"Hi {name}", ConsoleColor.DarkGreen));
         }
     }
 }
