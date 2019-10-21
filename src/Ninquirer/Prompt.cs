@@ -22,5 +22,7 @@ namespace Ninquirer
             => _selectMultiple.Ask(question, options);
 
         public static string Input(string question) => _input.Ask(question);
+
+        public static int? IntInput(string question) => _input.AskInt(question);
     }
 }
